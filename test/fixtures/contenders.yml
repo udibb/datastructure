@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  contendent: 
+  contendent_type: MyString
+
+two:
+  contendent: 
+  contendent_type: MyString

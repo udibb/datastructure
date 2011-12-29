@@ -1,0 +1,23 @@
+<h1>Listing dibbs</h1>
+
+<table>
+  <tr>
+    <th>Owner</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dibbs.each do |dibb| %>
+  <tr>
+    <td><%= dibb.owner %></td>
+    <td><%= link_to 'Show', dibb %></td>
+    <td><%= link_to 'Edit', edit_dibb_path(dibb) %></td>
+    <td><%= link_to 'Destroy', dibb, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dibb', new_dibb_path %>

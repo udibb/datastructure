@@ -1,0 +1,29 @@
+<%= form_for(@claim) do |f| %>
+  <% if @claim.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@claim.errors.count, "error") %> prohibited this claim from being saved:</h2>
+
+      <ul>
+      <% @claim.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :dibb %><br />
+    <%= f.text_field :dibb %>
+  </div>
+  <div class="field">
+    <%= f.label :owner %><br />
+    <%= f.text_field :owner %>
+  </div>
+  <div class="field">
+    <%= f.label :contender %><br />
+    <%= f.text_field :contender %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

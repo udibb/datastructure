@@ -1,0 +1,21 @@
+<h1>Listing nonusers</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @nonusers.each do |nonuser| %>
+  <tr>
+    <td><%= link_to 'Show', nonuser %></td>
+    <td><%= link_to 'Edit', edit_nonuser_path(nonuser) %></td>
+    <td><%= link_to 'Destroy', nonuser, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Nonuser', new_nonuser_path %>

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Dibb:</b>
+  <%= @claim.dibb %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%= @claim.owner %>
+</p>
+
+<p>
+  <b>Contender:</b>
+  <%= @claim.contender %>
+</p>
+
+
+<%= link_to 'Edit', edit_claim_path(@claim) %> |
+<%= link_to 'Back', claims_path %>

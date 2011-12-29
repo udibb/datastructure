@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Contendent:</b>
+  <%= @contender.contendent %>
+</p>
+
+<p>
+  <b>Contendent type:</b>
+  <%= @contender.contendent_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_contender_path(@contender) %> |
+<%= link_to 'Back', contenders_path %>
