@@ -1,2 +1,25 @@
 class User < ActiveRecord::Base
+  has_many :owned_dibbs,                        #
+            :class_name => "Dibb",                #
+            :foreign_key => "owner_id"            #because the previous line messed this up
+  has_many :owned_claims,                       #
+            :class_name => "Claim",               #
+            :foreign_key => "owner_id"            #because the previous line messed this up
+  has_many :owned_comments,                     #
+            :class_name => "Comment",             #
+            :foreign_key => "owner_id"            #because the previous line messed this up
+
+  has_many :confirms
+  has_many :likes
+  has_one :contender,                           #basically the contender is this user
+            :as => :contendent                    #means the user is the contender's contendent
+
+#\/ \/ \/stuff that is not essential to the structure\/ \/ \/
+
+  has_many :liked_comments,                     #
+            :through => :likes,                   #
+            :source => :comment                   #in the like class this links to the comment
+  has_many :confirmed_claims,                   #
+            :through => :confirms,                #
+            :source => :claim                     #in the confirm class this links to the claim
 end

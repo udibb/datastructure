@@ -1,3 +1,6 @@
 class Dibb < ActiveRecord::Base
-  belongs_to :owner
+  belongs_to :owner,                            #the user that made the dibb
+              :class_name => "User",              #because the owner is a user
+              :foreign_key => "owner_id"          #because the previous line messed this up
+  has_many :claims                              #
 end
