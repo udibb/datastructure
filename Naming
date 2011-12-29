@@ -1,0 +1,22 @@
+Naming
+Claim:      a claim to a dibb
+            it claimed by a User, on a Contender, and about a Dibb
+Comment:    a comment
+            it is written by a User, on a Claim, and it can be liked by many other Users
+Confirm:    an action a user does to a claim
+            pretty much invisible: a link between a User and a Claim that the user wants to confirm
+Contender:  the object of a claim
+            it is linked to a User or Nonuser, and is the object of a Claim
+Dibb:       duh
+            a list of Claims
+Like:       an action a user does to a comment
+            pretty much invisible: a link between a User and a Comment that the user wants to like
+Nonuser:    something that is trying to get a dibb
+            has a Condender and is a Contendent
+User:       duh
+            has ownership of pretty much everything, can be a Contendent
+
+
+Contender vs Contendent vs Claim vs User/Nonuser
+A Contender is the object of a Claim, while a Dibb is the subject of a Claim.
+A Contendent is the content of the Contender: a User (or Nonuser) can be a Contendent and therefore linked to by a Contender.
