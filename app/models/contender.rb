@@ -1,5 +1,7 @@
-class Contender < ActiveRecord::Base
-  belongs_to :contendent,                       #The actuall contendent
-              :polymorphic => true                #means it can be anything (like a user or a nonuser)
-  has_many :claims                              #you can claim more than one dibb
+class Contender < ActiveRecord::Base    #Core
+  belongs_to :contendent,
+              :polymorphic => true
+  has_many :claims
+
+  validates_presence_of :contendent
 end

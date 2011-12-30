@@ -1,15 +1,23 @@
-class Claim < ActiveRecord::Base
-  belongs_to :dibb                              #
-  belongs_to :owner,                            #the user that made the claim, not the user that the claim is claiming
-              :class_name => "User",              #because the owner is a user
-              :foreign_key => "owner_id"          #because the previous line messed this up
-  belongs_to :contender                         #
-  has_many :comments                            #the comments that are biased toward this claim
-  has_many :confirms                            #
+class Claim < ActiveRecord::Base    #Core
+  belongs_to :dibb
+  belongs_to :owner,
+              :class_name => "User",
+              :foreign_key => "owner_id"
+  belongs_to :contender
+  has_many :comments
+  has_many :confirms
 
-#\/ \/ \/stuff that is not essential to the structure\/ \/ \/
+  validates_presence_of :dibb
+  validates_presence_of :owner
+  validates_presence_of :contender
+end
+class Claim                         #Fields
+  #title:string
 
-  has_many :confirmers,                         #
-            :through => :confirms,                #
-            :source => :user                      #in the confirm class this links to the user
+  validates_presence_of :title    #maybe test for uniqueness within the dibb
+end
+class Claim                         #Links
+  has_many :confirmers,
+            :through => :confirms,
+            :source => :user
 end

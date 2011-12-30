@@ -1,0 +1,27 @@
+<h1>Listing claims</h1>
+
+<table>
+  <tr>
+    <th>Dibb</th>
+    <th>Owner</th>
+    <th>Contender</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @claims.each do |claim| %>
+  <tr>
+    <td><%= claim.dibb.title %></td>
+    <td><%= claim.owner.name %></td>
+    <td><%= claim.contender.contendent.name %></td>
+    <td><%= link_to 'Show', claim %></td>
+    <td><%= link_to 'Edit', edit_claim_path(claim) %></td>
+    <td><%= link_to 'Destroy', claim, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Claim', new_claim_path %>

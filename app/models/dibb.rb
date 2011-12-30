@@ -1,6 +1,12 @@
-class Dibb < ActiveRecord::Base
-  belongs_to :owner,                            #the user that made the dibb
-              :class_name => "User",              #because the owner is a user
-              :foreign_key => "owner_id"          #because the previous line messed this up
-  has_many :claims                              #
+class Dibb < ActiveRecord::Base   #Core
+  belongs_to :owner,
+              :class_name => "User",
+              :foreign_key => "owner_id"
+  has_many :claims
+
+  validates_presence_of :owner
+end
+class Dibb                        #Fields
+  #title:string
+  validates_presence_of :title #maybe test for uniqueness (unique check includes tags)
 end

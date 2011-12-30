@@ -1,0 +1,8 @@
+class Confirm < ActiveRecord::Base
+  belongs_to :user                              #
+  belongs_to :claim                             #
+  
+  #\/ \/ \/validation\/ \/ \/
+  validates_presence_of :user
+  validates_presence_of :claim
+end

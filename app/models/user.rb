@@ -1,25 +1,38 @@
-class User < ActiveRecord::Base
-  has_many :owned_dibbs,                        #
-            :class_name => "Dibb",                #
-            :foreign_key => "owner_id"            #because the previous line messed this up
-  has_many :owned_claims,                       #
-            :class_name => "Claim",               #
-            :foreign_key => "owner_id"            #because the previous line messed this up
-  has_many :owned_comments,                     #
-            :class_name => "Comment",             #
-            :foreign_key => "owner_id"            #because the previous line messed this up
-
+class User < ActiveRecord::Base   #Core
+  has_many :owned_dibbs,
+            :class_name => "Dibb",
+            :foreign_key => "owner_id"
+  has_many :owned_claims,
+            :class_name => "Claim",
+            :foreign_key => "owner_id"
+  has_many :owned_comments,
+            :class_name => "Comment",
+            :foreign_key => "owner_id"
   has_many :confirms
   has_many :likes
-  has_one :contender,                           #basically the contender is this user
-            :as => :contendent                    #means the user is the contender's contendent
+  has_one :contender,
+            :as => :contendent
 
-#\/ \/ \/stuff that is not essential to the structure\/ \/ \/
+  after_create :make_contender
+end
+class User                        #Fields
+  #name:string
+  #email:string
 
-  has_many :liked_comments,                     #
-            :through => :likes,                   #
-            :source => :comment                   #in the like class this links to the comment
-  has_many :confirmed_claims,                   #
-            :through => :confirms,                #
-            :source => :claim                     #in the confirm class this links to the claim
+  validates_presence_of :name
+  validates_presence_of :email
+end
+class User                        #Links
+  has_many :liked_comments,
+            :through => :likes,
+            :source => :comment
+  has_many :confirmed_claims,
+            :through => :confirms,
+            :source => :claim
+end
+class User                        #Methods
+  private
+    def make_contender
+      Contender.create(:contendent => self)
+    end
 end

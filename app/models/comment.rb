@@ -1,13 +1,20 @@
-class Comment < ActiveRecord::Base
-  belongs_to :claim                             #
-  belongs_to :owner,                            #the user that comments
-              :class_name => "User",              #because the owner is a user
-              :foreign_key => "owner_id"          #because the previous line messed this up
-  has_many :likes                               #
+class Comment < ActiveRecord::Base    #Core
+  belongs_to :claim
+  belongs_to :owner,
+              :class_name => "User",
+              :foreign_key => "owner_id"
+  has_many :likes
 
-#\/ \/ \/stuff that is not essential to the structure\/ \/ \/
+  validates_presence_of :claim
+  validates_presence_of :owner
+end
+class Comment                         #Fields
+  #content:string
 
-  has_many :likers,                             #the users that liked this comment
-            :through => :likes,                   #
-            :source => :user                      #in the like class this links to the user
+  validates_presence_of :content
+end
+class Comment                         #Links
+  has_many :likers,
+            :through => :likes,
+            :source => :user
 end
