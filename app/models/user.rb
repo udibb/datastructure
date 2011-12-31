@@ -32,6 +32,7 @@ class User                        #Links
   has_many :confirmed_dibbs,
             :through => :confirmed_claims,
             :source => :dibb
+  alias :following :confirmed_dibbs   #TODO: maybe change this so that you can unfollow without unconfirming
 end
 class User                        #Methods
   private
