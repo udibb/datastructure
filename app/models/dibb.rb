@@ -10,3 +10,9 @@ class Dibb                        #Fields
   #title:string
   validates_presence_of :title #maybe test for uniqueness (unique check includes tags)
 end
+class Dibb                        #Links
+  has_many :confirmers,
+            :through => :claims
+  has_many :comments,
+            :through => :claims
+end

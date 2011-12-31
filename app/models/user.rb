@@ -18,9 +18,9 @@ end
 class User                        #Fields
   #name:string
   #email:string
-
-  validates_presence_of :name
-  validates_presence_of :email
+  
+  validates :name, :presence => true
+  validates :email, :presence => true, :uniqueness => true
 end
 class User                        #Links
   has_many :liked_comments,
@@ -29,6 +29,9 @@ class User                        #Links
   has_many :confirmed_claims,
             :through => :confirms,
             :source => :claim
+  has_many :confirmed_dibbs,
+            :through => :confirmed_claims,
+            :source => :dibb
 end
 class User                        #Methods
   private
